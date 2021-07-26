@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/welcome_to_jihyun_s_cafe"
+        android:textColor="@color/pink"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subtitle_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/_1_select_your_coffee_type"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_welcome"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="130dp"
+        android:layout_height="160dp"
+        android:contentDescription="@string/coffee_image"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rdg_coffee_type"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_type"
+        android:src="@drawable/cafe" />
+
+    <RadioGroup
+        android:id="@+id/rdg_coffee_type"
+        android:layout_width="210dp"
+        android:layout_height="263dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_type"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/rdb_americano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/americano" />
+
+        <RadioButton
+            android:id="@+id/rdb_flatwhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flat_white" />
+
+        <RadioButton
+            android:id="@+id/rdb_cafemisto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/caffe_misto" />
+
+        <RadioButton
+            android:id="@+id/rdb_caramelmacchiato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/caramel_macchiato" />
+
+        <RadioButton
+            android:id="@+id/rdb_cafelatter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cafe_latte" />
+
+        <RadioButton
+            android:id="@+id/rdb_dolcelatte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dolce_latte" />
+
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/subtitle_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_2_select_coffee_size"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdg_coffee_type"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/sp_size"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal"
+        android:layout_margin="30dp"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        android:value="@={vm.observableIntVariable}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/subtitle_size"
+        app:layout_constraintTop_toBottomOf="@+id/rdg_coffee_type" />
+
+    <TextView
+        android:id="@+id/subtitle_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:text="3. Select Quantity"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/np_quantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_size"
+        tools:ignore="MissingConstraints" />
+
+    <NumberPicker
+        android:id="@+id/np_quantity"
+        android:layout_width="0dp"
+        android:layout_height="87dp"
+        android:layout_margin="30dp"
+        android:value="@={vm.observableIntVariable}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/subtitle_size"
+        app:layout_constraintTop_toBottomOf="@+id/sp_size" />
+
+
+
+    <Button
+        android:id="@+id/btn_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Add to Order"
+        android:backgroundTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/np_quantity"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

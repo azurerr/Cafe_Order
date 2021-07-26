@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Jihyun_MyOrder</string>
+    <string name="welcome_to_jihyun_s_cafe">Welcome to Jihyun\'s Cafe!</string>
+    <string name="_1_select_your_coffee_type">1. Select Your Coffee Type</string>
+    <string name="coffee_image">Coffee Image</string>
+    <string name="americano">Americano</string>
+    <string name="flat_white">Flat White</string>
+    <string name="caffe_misto">Caffe Misto</string>
+    <string name="caramel_macchiato">Caramel Macchiato</string>
+    <string name="cafe_latte">Cafe Latte</string>
+    <string name="dolce_latte">Dolce Latte</string>
+    <string name="_2_select_coffee_size">2. Select Coffee Size</string>
+    <string name="order_list">Order List</string>
+    <string name="coffee_type">Coffee Type :</string>
+    <string name="size">Size :</string>
+    <string name="quantity">Quantity :</string>
+    <string name="thank_you_for_your_order">*Thank you for your Order*</string>
+    <string name="please_review_order_list">Please review order list</string>
+    <string name="click_to_update_swipe_to_delete">Click to update, Swipe to delete</string>
+
+    <string-array name="size_array">
+        <item>Short</item>
+        <item>Tall</item>
+        <item>Grande</item>
+        <item>Venti</item>
+    </string-array>
+
+</resources>
