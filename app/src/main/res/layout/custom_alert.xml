@@ -9,6 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:inputType="number"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
