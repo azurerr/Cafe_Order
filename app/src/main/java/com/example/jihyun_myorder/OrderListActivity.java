@@ -93,8 +93,8 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
         selectedOrder.setSize(orderItem.getSize());
 
         AlertDialog.Builder updateAlert = new AlertDialog.Builder(this);
-        updateAlert.setTitle("Update quantity");
-        updateAlert.setMessage("Provide the updated quantity for this order");
+        updateAlert.setTitle("Update quantity")
+                .setMessage("Provide the updated quantity for this order");
 
         //Call a separate custom Alert View to get an integer value from the EditText
         final View customAlert = getLayoutInflater().inflate(R.layout.custom_alert, null);
@@ -107,7 +107,7 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
 
                 //EditText editText = customAlert.findViewById(R.id.edit_quantity);
                 //Update the order in DB
-                if (editText.getText() != null) {
+                /*if (editText.getText() != null) {
 
                     selectedOrder.setQuantity(Integer.parseInt(editText.getText().toString()));
                     orderViewModel.updateOrder(selectedOrder);
@@ -119,7 +119,7 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
                 } else {
                     selectedOrder.setQuantity(0);
                     editText.setError("Quantity cannot be empty");
-                }
+                }*/
             }
         });
 
@@ -130,8 +130,29 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
             }
         });
 
-        updateAlert.show();
+        final AlertDialog alertDialog = updateAlert.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText newQuantity = customAlert.findViewById(R.id.edit_quantity);
+                String stringQuantity = newQuantity.getText().toString().trim();
 
+                // Check if the user didn't enter the quantity
+                if (stringQuantity.isEmpty()) {
+                    newQuantity.setError("Quantity is required");
+                } else {
+                    selectedOrder.setQuantity(Integer.parseInt(editText.getText().toString()));
+                    orderViewModel.updateOrder(selectedOrder);
+                    orderAdapter.notifyDataSetChanged();
+
+                    Toast.makeText(getApplicationContext(),
+                            selectedOrder.getCoffeeType() + " Quantity has been updated ",
+                            Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
+                }
+            }
+        });
     }
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
@@ -139,7 +160,6 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
             return false;
         }
-
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
@@ -172,7 +192,6 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
                 Toast.makeText(getApplicationContext(),
                         " The order for " + selectedOrder.getCoffeeType() + " has been removed",
                         Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -183,9 +202,6 @@ public class OrderListActivity extends AppCompatActivity implements OnOrderItemC
                 dialog.dismiss();
             }
         });
-
         deleteAlert.show();
-
     }
-
 }

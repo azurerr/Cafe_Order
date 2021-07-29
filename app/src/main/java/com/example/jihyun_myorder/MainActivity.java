@@ -1,10 +1,5 @@
 package com.example.jihyun_myorder;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.jihyun_myorder.database.Order;
 import com.example.jihyun_myorder.databinding.ActivityMainBinding;
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         numberPicker.setMaxValue(10);
 
         this.orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
-
     }
 
     @Override
